@@ -40,15 +40,19 @@ for i in range(25):
 plt.show()
 
 #This segment builds the model (it's not yet trained or anything but the initial structure is set up). The structure is a Neural Network with 784(=28x28) input nodes, 10 output nodes with 1 hidden layer of 128 nodes. Is this optimal? I don't know. This is simply the suggested structure for this dataset in the Tensorflow Docs.
-model = tf.keras.model.Sequential([
-    tf.keras.layers.Flatter(input_shape=(28,28)),
+model = tf.keras.Sequential([
+    tf.keras.layers.Flatten(input_shape=(28,28)),
     tf.keras.layers.Dense(128, activation='relu'),
     tf.keras.layers.Dense(10)
 ])
 
 #The next step is to compile the model which defines some of the options to be used during training (eg. the loss function used, the metrics to be reported etc.)
-model.compile(optimizer='adam',loss=tf.keras.losses.SparseCategoricalCrossEntropy(from_logits=True), metrics=['accuracy'])
+model.compile(optimizer='adam',loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True), metrics=['accuracy'])
 
 #Training the model
 model.fit(train_images, train_labels, epochs=10)
+
+#Evaluate how the model performs on the test data
+test_loss, test_acc = model.evaluate(test_images,  test_labels, verbose=2)
+print('\nTest accuracy:', test_acc)
 
