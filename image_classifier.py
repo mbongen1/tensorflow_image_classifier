@@ -29,15 +29,15 @@ train_images = train_images / 255.0
 test_images = test_images / 255.0
 
 #This part of the code displays the first 25 images in our transformed training set with the label below each image
-plt.figure(figsize=(10,10))
-for i in range(25):
-    plt.subplot(5,5,i+1)
-    plt.xticks([])
-    plt.yticks([])
-    plt.grid(False)
-    plt.imshow(train_images[i], cmap=plt.cm.binary)
-    plt.xlabel(class_names[train_labels[i]])
-plt.show()
+#plt.figure(figsize=(10,10))
+#for i in range(25):
+#    plt.subplot(5,5,i+1)
+#    plt.xticks([])
+#    plt.yticks([])
+#    plt.grid(False)
+#    plt.imshow(train_images[i], cmap=plt.cm.binary)
+#    plt.xlabel(class_names[train_labels[i]])
+#plt.show()
 
 #This segment builds the model (it's not yet trained or anything but the initial structure is set up). The structure is a Neural Network with 784(=28x28) input nodes, 10 output nodes with 1 hidden layer of 128 nodes. Is this optimal? I don't know. This is simply the suggested structure for this dataset in the Tensorflow Docs.
 model = tf.keras.Sequential([
@@ -63,9 +63,9 @@ probability_model = tf.keras.Sequential([model,
 
 #Here, we make make predictions for all of the images in the test set and print the model's confidence for the first predicted image
 predictions = probability_model.predict(test_images)
-print("The model's prediction for the first image (as a series of probabilites) is: ", predictions[0])
-max = np.argmax(predictions[0]) #The model is most confident in this label out of the 10 possibilities from 0 to 9
-print("The model's prediction for the correct label of the image is: ", class_names[max])
+#print("The model's prediction for the first image (as a series of probabilites) is: ", predictions[0])
+#max = np.argmax(predictions[0]) #The model is most confident in this label out of the 10 possibilities from 0 to 9
+#print("The model's prediction for the correct label of the image is: ", class_names[max])
 
 
 #Inserting some functions from the Tensorflow Docs for displaying predictions
@@ -102,7 +102,7 @@ def plot_value_array(i, predictions_array, true_label):
 
 # Plot the first X test images, their predicted labels, and the true labels.
 # Color correct predictions in blue and incorrect predictions in red.
-num_rows = 5
+num_rows = 3
 num_cols = 3
 num_images = num_rows*num_cols
 plt.figure(figsize=(2*2*num_cols, 2*num_rows))
