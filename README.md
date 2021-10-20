@@ -17,4 +17,4 @@ The prorgam makes use of the Fashion MNIST dataset and splits the 70 000 images 
 ## **Set Up and Usage**
 - Install Tensorflow (`pip install tensorflow`)
 - Run `python image_classifier.py`
-- Lastly, let the program do it's thing. 
+- Lastly, let the program do its thing. 
